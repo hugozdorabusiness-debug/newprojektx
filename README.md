@@ -58,9 +58,9 @@ http://localhost:5000
 └── .tmp/                  # Temporary cache files
 ```
 
-## Deployment (Automated Scraping) 🚀
+## Deployment (Full Dashboard) 🚀
 
-This project uses [Modal](https://modal.com) to run the scraper automatically every 24 hours in the cloud.
+This project uses [Modal](https://modal.com) to host the entire dashboard and run the scraper automatically.
 
 ### 1. Setup Modal
 
@@ -69,21 +69,23 @@ pip install modal
 python -m modal setup
 ```
 
-### 2. Deploy Scraper
+### 2. Deploy Dashboard
 
 ```bash
-python -m modal deploy modal_scraper.py
+python -m modal deploy modal_app.py
 ```
 
 This will:
-- Deploy the scraper to the cloud ☁️
-- Schedule it to run every 24 hours ⏰
-- Create a persistent volume for data 💾
-- Provide a web endpoint to access the scraped data 🌐
+- **Host the Dashboard UI** on a public URL 🌐
+- **Schedule the Scraper** to run every 24 hours ⏰
+- **Persist Data** in a Modal Volume 💾
 
-### 3. View Logs & Manage
+### 3. Access Your App
 
-You can view logs, run history, and manage the deployment at [modal.com](https://modal.com/apps).
+After deployment, Modal will give you a URL like:
+`https://your-username--ai-news-dashboard-flask-app.modal.run`
+
+Open this URL to see your live dashboard! 🎉
 
 ## API Endpoints
 
