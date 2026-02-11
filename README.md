@@ -58,6 +58,33 @@ http://localhost:5000
 └── .tmp/                  # Temporary cache files
 ```
 
+## Deployment (Automated Scraping) 🚀
+
+This project uses [Modal](https://modal.com) to run the scraper automatically every 24 hours in the cloud.
+
+### 1. Setup Modal
+
+```bash
+pip install modal
+python -m modal setup
+```
+
+### 2. Deploy Scraper
+
+```bash
+python -m modal deploy modal_scraper.py
+```
+
+This will:
+- Deploy the scraper to the cloud ☁️
+- Schedule it to run every 24 hours ⏰
+- Create a persistent volume for data 💾
+- Provide a web endpoint to access the scraped data 🌐
+
+### 3. View Logs & Manage
+
+You can view logs, run history, and manage the deployment at [modal.com](https://modal.com/apps).
+
 ## API Endpoints
 
 - `GET /` - Serve dashboard
@@ -117,7 +144,7 @@ http://localhost:5000
 
 - [ ] Supabase integration for persistent storage
 - [ ] User authentication
-- [ ] Scheduled automatic scraping (cron jobs)
+- [x] Scheduled automatic scraping (via Modal)
 - [ ] Email notifications for new articles
 - [ ] Advanced search and filtering
 - [ ] Export to PDF/CSV
